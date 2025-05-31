@@ -34,7 +34,7 @@
       width: 100%;
       background-color: var(--card);
       padding: 1rem 2rem;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #ddd;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -76,24 +76,23 @@
       transform-origin: 70% 70%;
     }
     @keyframes wave {
-      0% { transform: rotate(0deg); }
+      0%, 100% { transform: rotate(0deg); }
       10% { transform: rotate(14deg); }
       20% { transform: rotate(-8deg); }
       30% { transform: rotate(14deg); }
       40% { transform: rotate(-4deg); }
       50% { transform: rotate(10deg); }
       60% { transform: rotate(0deg); }
-      100% { transform: rotate(0deg); }
     }
     .polaroid {
       width: 100%;
       max-width: 400px;
       background: white;
       padding: 16px 16px 24px;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       text-align: center;
       margin-top: 1.5rem;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
       border-radius: 8px;
       font-size: 1.1rem;
     }
@@ -110,6 +109,13 @@
       max-width: 900px;
       margin: 4rem auto;
       padding: 0 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .section h2 {
       font-size: 1.5rem;
@@ -120,24 +126,22 @@
       border-top: 1px solid #ccc;
       margin: 0.5rem 0 1.5rem;
     }
-    .card-box {
-      background: var(--card);
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 2rem;
-      margin-top: 1rem;
-    }
     .project {
       background: var(--card);
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       padding: 1rem;
       border-radius: 8px;
       margin-bottom: 1rem;
       cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+    .project:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .contact-box {
       background: var(--card);
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       border-radius: 8px;
       padding: 2rem;
       display: flex;
@@ -175,9 +179,6 @@
       max-height: 90vh;
       overflow-y: auto;
     }
-    .modal-content h3 {
-      margin-top: 0;
-    }
     .close-modal {
       float: right;
       font-size: 1.5rem;
@@ -201,7 +202,7 @@
   <header id="hero">
     <h1>Hello, it’s Jeryann <span class="wave">👋</span></h1>
     <div class="polaroid">
-      <img src="images/jeryann.jpeg" alt="Jeryann"/>
+      <img src="images/jeryann.jpeg" alt="Jeryann" />
       <p id="typing-text">Loading...</p>
     </div>
   </header>
@@ -209,20 +210,16 @@
   <section class="section" id="about">
     <h2>About Me</h2>
     <hr />
-    <div class="card-box">
-      <p>I’m currently pursuing Higher Nitec in AI Applications, with a strong interest in UI/UX, assistive robotics, and intelligent applications.</p>
-    </div>
+    <p>I’m currently pursuing Higher Nitec in AI Applications, with a strong interest in UI/UX, assistive robotics, and intelligent applications.</p>
   </section>
 
   <section class="section" id="projects">
     <h2>Projects</h2>
     <hr />
-    <div class="card-box">
-      <div class="project" onclick="openModal(0)">NAO Medical Assistant</div>
-      <div class="project" onclick="openModal(1)">OpenVINO Object Detection</div>
-      <div class="project" onclick="openModal(2)">Streamlit Classifier</div>
-      <div class="project" onclick="openModal(3)">Arduino Smart Sorter</div>
-    </div>
+    <div class="project" onclick="openModal(0)">NAO Medical Assistant</div>
+    <div class="project" onclick="openModal(1)">OpenVINO Object Detection</div>
+    <div class="project" onclick="openModal(2)">Streamlit Classifier</div>
+    <div class="project" onclick="openModal(3)">Arduino Smart Sorter</div>
   </section>
 
   <section class="section" id="contact">
@@ -275,26 +272,10 @@
     }
 
     const projectData = [
-      {
-        title: "NAO Medical Assistant",
-        description: "Speech-enabled robot using NAOqi, with TTS, reminders, and basic healthcare commands.",
-        video: "videos/nao_demo.mp4"
-      },
-      {
-        title: "OpenVINO Object Detection",
-        description: "Real-time object detection system optimized with Intel’s OpenVINO toolkit.",
-        video: ""
-      },
-      {
-        title: "Streamlit Classifier",
-        description: "Web-based image classifier with interactive UI using Streamlit.",
-        video: ""
-      },
-      {
-        title: "Arduino Smart Sorter",
-        description: "A conveyor-based sorting system using sensors and real-time score updates.",
-        video: ""
-      }
+      { title: "NAO Medical Assistant", description: "Speech-enabled robot using NAOqi, with TTS, reminders, and basic healthcare commands.", video: "videos/nao_demo.mp4" },
+      { title: "OpenVINO Object Detection", description: "Real-time object detection system optimized with Intel’s OpenVINO toolkit.", video: "" },
+      { title: "Streamlit Classifier", description: "Web-based image classifier with interactive UI using Streamlit.", video: "" },
+      { title: "Arduino Smart Sorter", description: "A conveyor-based sorting system using sensors and real-time score updates.", video: "" }
     ];
 
     function openModal(index) {
@@ -316,6 +297,16 @@
     function closeModal() {
       document.getElementById("projectModal").style.display = "none";
     }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section').forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
