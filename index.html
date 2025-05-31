@@ -111,6 +111,22 @@
       margin: 4rem auto;
       padding: 0 2rem;
     }
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .section hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 0.5rem 0 1.5rem;
+    }
+    .card-box {
+      background: var(--card);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 1rem;
+    }
     .project {
       background: var(--card);
       border: 1px solid #ccc;
@@ -192,19 +208,26 @@
 
   <section class="section" id="about">
     <h2>About Me</h2>
-    <p>I’m currently pursuing Higher Nitec in AI Applications, with a strong interest in UI/UX, assistive robotics, and intelligent applications.</p>
+    <hr />
+    <div class="card-box">
+      <p>I’m currently pursuing Higher Nitec in AI Applications, with a strong interest in UI/UX, assistive robotics, and intelligent applications.</p>
+    </div>
   </section>
 
   <section class="section" id="projects">
     <h2>Projects</h2>
-    <div class="project" onclick="openModal(0)">NAO Medical Assistant</div>
-    <div class="project" onclick="openModal(1)">OpenVINO Object Detection</div>
-    <div class="project" onclick="openModal(2)">Streamlit Classifier</div>
-    <div class="project" onclick="openModal(3)">Arduino Smart Sorter</div>
+    <hr />
+    <div class="card-box">
+      <div class="project" onclick="openModal(0)">NAO Medical Assistant</div>
+      <div class="project" onclick="openModal(1)">OpenVINO Object Detection</div>
+      <div class="project" onclick="openModal(2)">Streamlit Classifier</div>
+      <div class="project" onclick="openModal(3)">Arduino Smart Sorter</div>
+    </div>
   </section>
 
   <section class="section" id="contact">
     <h2>Contact</h2>
+    <hr />
     <div class="contact-box">
       <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:jeryann@example.com">jeryann@example.com</a></div>
       <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></div>
