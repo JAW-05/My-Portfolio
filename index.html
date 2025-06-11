@@ -180,6 +180,11 @@
     .modal-content h3 {
       margin-top: 0;
     }
+    .modal-content img {
+      margin-top: 12px;
+      width: 100%;
+      border-radius: 6px;
+    }
     .close-modal {
       position: absolute;
       top: 1rem;
@@ -222,8 +227,8 @@
     <h2>Projects</h2>
     <hr />
     <div class="project" onclick="openModal(0)">NAO Medical Assistant</div>
-    <div class="project" onclick="openModal(1)">OpenVINO Object Detection</div>
-    <div class="project" onclick="openModal(2)">Streamlit Classifier</div>
+    <div class="project" onclick="openModal(1)">Face to Plate</div>
+    <div class="project" onclick="openModal(2)">Personal Protective Equipment Detection</div>
     <div class="project" onclick="openModal(3)">Arduino Smart Sorter</div>
   </section>
 
@@ -231,9 +236,9 @@
     <h2>Contact</h2>
     <hr />
     <div class="contact-box">
-      <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:jeryann@example.com">jeryann@example.com</a></div>
-      <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></div>
-      <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></div>
+      <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:jeryann@outlook15.com">jeryann@outlook15.com</a></div>
+      <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/jeryanntan" target="_blank">linkedin.com/in/jeryanntan</a></div>
+      <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/JAW-05" target="_blank">github.com/JAW-05</a></div>
     </div>
   </section>
 
@@ -244,6 +249,7 @@
       <span class="close-modal" onclick="closeModal()">&times;</span>
       <h3 id="modalTitle"></h3>
       <p id="modalDescription"></p>
+      <div id="extraContent"></div>
       <video id="modalVideo" controls style="width:100%; display:none;">
         <source src="" type="video/mp4">
       </video>
@@ -251,7 +257,7 @@
   </div>
 
   <script>
-    const phrases = ["UI/UX Enthusiast", "AI Developer", "Future-Ready Thinker"];
+    const phrases = ["AI Applications Student", "UI/UX Geek", "Future-Ready Thinker"];
     let currentPhrase = 0, currentChar = 0;
     const typingText = document.getElementById("typing-text");
     function typePhrase() {
@@ -279,22 +285,28 @@
     const projectData = [
       {
         title: "NAO Medical Assistant",
-        description: "Speech-enabled robot using NAOqi, with TTS, reminders, and basic healthcare commands.",
+        description: "Speech enabled robot using NAOqi, with TTS, reminders, and basic healthcare commands.",
         video: "videos/nao_demo.mp4"
       },
       {
-        title: "OpenVINO Object Detection",
-        description: "Real-time object detection system optimized with Intel’s OpenVINO toolkit.",
-        video: ""
+        title: "Face to Plate",
+        description: "Real time age, gender, emotion food reccomendation system using OpenVINO and Streamlit.",
+        video: "videos/food.mp4"
       },
       {
-        title: "Streamlit Classifier",
-        description: "Web-based image classifier with interactive UI using Streamlit.",
-        video: ""
+        title: "Personal Protective Equipment Detection System",
+        description: "Classifier aligned with UN SDGs using Streamlit and OpenCV.",
+        video: "",
+        images: [
+          "images/ppe1.png",
+          "images/ppe2.png",
+          "images/ppe3.png"
+        ],
+        link: "https://drive.google.com/file/d/1y2OWfY9TMwXvLA8c8FQv9bZFeK_Xo8hh/view?usp=sharing"
       },
       {
         title: "Arduino Smart Sorter",
-        description: "A conveyor-based sorting system using sensors and real-time score updates.",
+        description: "A conveyor based sorting system using TinyML and RaspberryPi with real-time score updates.",
         video: ""
       }
     ];
@@ -303,6 +315,7 @@
       const data = projectData[index];
       document.getElementById("modalTitle").textContent = data.title;
       document.getElementById("modalDescription").textContent = data.description;
+
       const video = document.getElementById("modalVideo");
       const source = video.querySelector("source");
       if (data.video) {
@@ -312,6 +325,30 @@
       } else {
         video.style.display = "none";
       }
+
+      const extraContent = document.getElementById("extraContent");
+      extraContent.innerHTML = "";
+
+      if (data.images && data.images.length) {
+        data.images.forEach(img => {
+          const imageEl = document.createElement("img");
+          imageEl.src = img;
+          extraContent.appendChild(imageEl);
+        });
+      }
+
+      if (data.link) {
+        const linkEl = document.createElement("a");
+        linkEl.href = data.link;
+        linkEl.target = "_blank";
+        linkEl.style.display = "block";
+        linkEl.style.marginTop = "12px";
+        linkEl.style.color = "#007BFF";
+        linkEl.style.textDecoration = "underline";
+        linkEl.textContent = "View Google Drive Video";
+        extraContent.appendChild(linkEl);
+      }
+
       document.getElementById("projectModal").style.display = "flex";
     }
 
