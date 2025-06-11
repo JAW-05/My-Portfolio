@@ -11,11 +11,13 @@
       --bg: #f7f7f7;
       --text: #111;
       --card: #fff;
+      --polaroid-text: gray;
     }
     [data-theme='dark'] {
       --bg: #111;
       --text: #f7f7f7;
       --card: #1f1f1f;
+      --polaroid-text: #ccc;
     }
     * {
       box-sizing: border-box;
@@ -91,16 +93,15 @@
       margin-top: 1.5rem;
       box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.08);
       border-radius: 8px;
-      font-size: 1.1rem;
     }
     .polaroid img {
       width: 100%;
       border-radius: 4px;
     }
-    .typing {
+    #typing-text {
       font-size: 1.2rem;
       margin-top: 1rem;
-      color: gray;
+      color: var(--polaroid-text);
     }
     .section {
       max-width: 900px;
@@ -257,7 +258,12 @@
   </div>
 
   <script>
-    const phrases = ["AI Applications Student", "UI/UX Geek", "Future-Ready Thinker"];
+    const phrases = [
+      "I love coding!",
+      "Jeryann",
+      "2025",
+      "AI Applications Student"
+    ];
     let currentPhrase = 0, currentChar = 0;
     const typingText = document.getElementById("typing-text");
     function typePhrase() {
@@ -290,12 +296,12 @@
       },
       {
         title: "Face to Plate",
-        description: "Real time age, gender, emotion food reccomendation system using OpenVINO and Streamlit.",
+        description: "Realtime food recommendation based on age, gender, emotion using OpenVINO and Streamlit.",
         video: "videos/food.mp4"
       },
       {
         title: "Personal Protective Equipment Detection System",
-        description: "Classifier aligned with UN SDGs using Streamlit and OpenCV.",
+        description: "Aligned with UN SDGs using Streamlit, OpenCV and RoboFlow. Developed this during the ITE x BrainAI Korea Exchange with the Korean students :)",
         video: "",
         images: [
           "images/ppe1.png",
@@ -306,7 +312,7 @@
       },
       {
         title: "Arduino Smart Sorter",
-        description: "A conveyor based sorting system using TinyML and RaspberryPi with real-time score updates.",
+        description: "A conveyor based sorting system using TinyML and Raspberry Pi with real time scoring sent to ThinkSpeak.",
         video: ""
       }
     ];
