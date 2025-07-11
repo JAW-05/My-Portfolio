@@ -201,6 +201,7 @@
     <div class="nav-right">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
       <span class="theme-toggle" onclick="toggleTheme()">
         <i class="fas fa-moon" id="theme-icon"></i>
@@ -233,6 +234,16 @@
     <div class="project" onclick="openModal(3)">Arduino Smart Sorter</div>
   </section>
 
+  <section class="section" id="certifications">
+    <h2>Certifications</h2>
+    <hr />
+    <div class="project" onclick="openCertModal(0)">AI for Everyone (Coursera)</div>
+    <div class="project" onclick="openCertModal(1)">Generative AI with Gemini (Google)</div>
+    <div class="project" onclick="openCertModal(2)">Robotics Fundamentals</div>
+    <div class="project" onclick="openCertModal(3)">UI/UX Workshop (DesignSprint)</div>
+    <div class="project" onclick="openCertModal(4)">Python Basics for Data Science</div>
+  </section>
+
   <section class="section" id="contact">
     <h2>Contact</h2>
     <hr />
@@ -254,6 +265,14 @@
       <video id="modalVideo" controls style="width:100%; display:none;">
         <source src="" type="video/mp4">
       </video>
+    </div>
+  </div>
+
+  <div class="modal" id="certModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeCertModal()">&times;</span>
+      <h3 id="certTitle"></h3>
+      <img id="certImage" src="" alt="Certification" />
     </div>
   </div>
 
@@ -358,8 +377,38 @@
       document.getElementById("projectModal").style.display = "flex";
     }
 
-    function closeModal() {
-      document.getElementById("projectModal").style.display = "none";
+    const certData = [
+      {
+        title: "AI for Everyone (Coursera)",
+        image: "images/cert1.jpg"
+      },
+      {
+        title: "Generative AI with Gemini (Google)",
+        image: "images/cert2.jpg"
+      },
+      {
+        title: "Robotics Fundamentals",
+        image: "images/cert3.jpg"
+      },
+      {
+        title: "UI/UX Workshop (DesignSprint)",
+        image: "images/cert4.jpg"
+      },
+      {
+        title: "Python Basics for Data Science",
+        image: "images/cert5.jpg"
+      }
+    ];
+
+    function openCertModal(index) {
+      const cert = certData[index];
+      document.getElementById("certTitle").textContent = cert.title;
+      document.getElementById("certImage").src = cert.image;
+      document.getElementById("certModal").style.display = "flex";
+    }
+
+    function closeCertModal() {
+      document.getElementById("certModal").style.display = "none";
     }
   </script>
 </body>
