@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jeryann | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
@@ -42,7 +42,8 @@
       align-items: center;
       z-index: 1000;
     }
-    nav .nav-left a, nav .nav-right a {
+    nav .nav-left a,
+    nav .nav-right a {
       text-decoration: none;
       color: var(--text);
     }
@@ -78,10 +79,22 @@
       transform-origin: 70% 70%;
     }
     @keyframes wave {
-      0%, 60%, 100% { transform: rotate(0deg); }
-      10%, 30% { transform: rotate(14deg); }
-      20%, 40% { transform: rotate(-8deg); }
-      50% { transform: rotate(10deg); }
+      0%,
+      60%,
+      100% {
+        transform: rotate(0deg);
+      }
+      10%,
+      30% {
+        transform: rotate(14deg);
+      }
+      20%,
+      40% {
+        transform: rotate(-8deg);
+      }
+      50% {
+        transform: rotate(10deg);
+      }
     }
     .polaroid {
       width: 100%;
@@ -103,6 +116,21 @@
       margin-top: 1rem;
       color: var(--polaroid-text);
     }
+    #tech-stack {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: var(--polaroid-text);
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    #tech-stack img {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
     .section {
       max-width: 900px;
       margin: 4rem auto;
@@ -123,7 +151,7 @@
       border-radius: 8px;
       padding: 2rem;
       margin-top: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
     .project {
       background: var(--card);
@@ -162,9 +190,11 @@
     .modal {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
       z-index: 2000;
@@ -212,8 +242,17 @@
   <header id="hero">
     <h1>Hello, it’s Jeryann <span class="wave">👋</span></h1>
     <div class="polaroid">
-      <img src="images/jeryann.jpeg" alt="Jeryann"/>
+      <img src="images/jeryann.jpeg" alt="Jeryann" />
       <p id="typing-text">Loading...</p>
+
+      <!-- Tech Stack icons below polaroid -->
+      <p id="tech-stack">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/python.svg" alt="Python" title="Python" />
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/openvino.svg" alt="OpenVINO" title="OpenVINO" />
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/arduino.svg" alt="Arduino" title="Arduino" />
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/streamlit.svg" alt="Streamlit" title="Streamlit" />
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/pygame.svg" alt="Pygame" title="Pygame" />
+      </p>
     </div>
   </header>
 
@@ -221,7 +260,12 @@
     <h2>About Me</h2>
     <hr />
     <div class="card-box">
-      <p>My name is Jeryann and I'm a final year Higher Nitec student pursuing AI Applications. I love doing anything related to tech especially UI/UX and AI! My goal is to build something that can benefit the world especially with how fast paced the world is developing now. During my free time, I like to watch movies/shows, play video games and discover new food places :)</p>
+      <p>
+        My name is Jeryann and I'm a final year Higher Nitec student pursuing AI Applications. I love doing anything related to
+        tech especially UI/UX and AI! My goal is to build something that can benefit the world especially with how fast paced
+        the world is developing now. During my free time, I like to watch movies/shows, play video games and discover new food
+        places :)
+      </p>
     </div>
   </section>
 
@@ -233,6 +277,7 @@
     <div class="project" onclick="openModal(2)">Personal Protective Equipment Detection</div>
     <div class="project" onclick="openModal(3)">Arduino Smart Sorter</div>
     <div class="project" onclick="openModal(4)">Ping Pong Game</div>
+    <div class="project" onclick="openModal(5)">Smart Face Recognition Attendance System</div>
   </section>
 
   <section class="section" id="certifications">
@@ -249,9 +294,20 @@
     <h2>Contact</h2>
     <hr />
     <div class="contact-box">
-      <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:jeryann@outlook15.com">jeryann@outlook15.com</a></div>
-      <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/jeryanntan" target="_blank">linkedin.com/in/jeryanntan</a></div>
-      <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/JAW-05" target="_blank">github.com/JAW-05</a></div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i
+        ><a href="mailto:jeryann@outlook15.com">jeryann@outlook15.com</a>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-linkedin"></i
+        ><a href="https://linkedin.com/in/jeryanntan" target="_blank"
+          >linkedin.com/in/jeryanntan</a
+        >
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-github"></i
+        ><a href="https://github.com/JAW-05" target="_blank">github.com/JAW-05</a>
+      </div>
     </div>
   </section>
 
@@ -264,7 +320,7 @@
       <p id="modalDescription"></p>
       <div id="extraContent"></div>
       <video id="modalVideo" controls style="width:100%; display:none;">
-        <source src="" type="video/mp4">
+        <source src="" type="video/mp4" />
       </video>
     </div>
   </div>
@@ -282,9 +338,10 @@
       "Welcome to my website!",
       "I love coding!",
       "2025",
-      "AI Applications Student"
+      "AI Applications Student",
     ];
-    let currentPhrase = 0, currentChar = 0;
+    let currentPhrase = 0,
+      currentChar = 0;
     const typingText = document.getElementById("typing-text");
     function typePhrase() {
       typingText.textContent = phrases[currentPhrase].slice(0, currentChar++);
@@ -311,73 +368,91 @@
     const projectData = [
       {
         title: "NAO Medical Assistant",
-        description: "Speech enabled robot using NAOqi, with TTS, reminders, and basic healthcare commands.",
-        video: "videos/nao_demo.mp4"
+        description:
+          "Speech enabled robot using NAOqi, with TTS, reminders, and basic healthcare commands.",
+        video: "videos/nao_demo.mp4",
       },
       {
         title: "Face to Plate",
-        description: "Real-time food recommendation based on age, gender, emotion using OpenVINO and Streamlit.",
-        video: "videos/food.mp4"
+        description:
+          "Real-time food recommendation based on age, gender, emotion using OpenVINO and Streamlit.",
+        video: "videos/food.mp4",
       },
       {
         title: "Personal Protective Equipment Detection System",
-        description: "Aligned with UN SDGs using Streamlit, OpenCV and RoboFlow. Developed this during the ITE x BrainAI Korea Exchange with the Korean students :)",
+        description:
+          "Aligned with UN SDGs using Streamlit, OpenCV and RoboFlow. Developed this during the ITE x BrainAI Korea Exchange with the Korean students :)",
         video: "",
         images: [
           "images/ppe1.png",
           "images/ppe2.png",
-          "images/ppe3.png"
+          "images/ppe3.png",
         ],
-        link: "https://drive.google.com/file/d/1y2OWfY9TMwXvLA8c8FQv9bZFeK_Xo8hh/view?usp=sharing"
+        link: "https://drive.google.com/file/d/1y2OWfY9TMwXvLA8c8FQv9bZFeK_Xo8hh/view?usp=sharing",
       },
       {
         title: "Arduino Smart Sorter",
-        description: "A conveyor based sorting system using TinyML and Raspberry Pi with real time scoring sent to ThinkSpeak.",
-        video: ""
+        description:
+          "A conveyor based sorting system using TinyML and Raspberry Pi with real time scoring sent to ThinkSpeak.",
+        video: "",
       },
       {
         title: "Ping Pong Game",
-        description: `Ping Pong game made using Python and Python which is inspired by the retro game "Pong"! Includes 2 player gameplay, scoring, and smooth gameplay.`,
-        video: "videos/pingpong.mp4"
-      }
+        description:
+          'Ping Pong game made using Python and Python which is inspired by the retro game "Pong"! Includes 2 player gameplay, scoring, and smooth gameplay',
+        video: "videos/pingpong.mp4",
+      },
+      {
+        title: "Smart Face Recognition Attendance System",
+        description: "Cooking... 🍳 This project is a work in progress!",
+        wip: true,
+      },
     ];
 
     function openModal(index) {
       const data = projectData[index];
       document.getElementById("modalTitle").textContent = data.title;
-      document.getElementById("modalDescription").textContent = data.description;
 
+      const modalDescription = document.getElementById("modalDescription");
+      const extraContent = document.getElementById("extraContent");
       const video = document.getElementById("modalVideo");
       const source = video.querySelector("source");
-      if (data.video) {
-        video.style.display = "block";
-        source.src = data.video;
-        video.load();
-      } else {
-        video.style.display = "none";
-      }
 
-      const extraContent = document.getElementById("extraContent");
       extraContent.innerHTML = "";
 
-      if (data.images && data.images.length) {
-        data.images.forEach(img => {
-          const imageEl = document.createElement("img");
-          imageEl.src = img;
-          extraContent.appendChild(imageEl);
-        });
-      }
+      if (data.wip) {
+        modalDescription.textContent = data.description;
+        video.style.display = "none";
+      } else {
+        modalDescription.textContent = data.description;
 
-      if (data.link) {
-        const linkEl = document.createElement("a");
-        linkEl.href = data.link;
-        linkEl.target = "_blank";
-        linkEl.style.display = "block";
-        linkEl.style.marginTop = "12px";
-        linkEl.style.color = "#007BFF";
-        linkEl.style.textDecoration = "underline";
-        linkEl.textContent = "View Google Drive Video";
-        extraContent.appendChild(linkEl);
+        if (data.video) {
+          video.style.display = "block";
+          source.src = data.video;
+          video.load();
+        } else {
+          video.style.display = "none";
+        }
+
+        if (data.images && data.images.length) {
+          data.images.forEach((img) => {
+            const imageEl = document.createElement("img");
+            imageEl.src = img;
+            extraContent.appendChild(imageEl);
+          });
+        }
+
+        if (data.link) {
+          const linkEl = document.createElement("a");
+          linkEl.href = data.link;
+          linkEl.target = "_blank";
+          linkEl.style.display = "block";
+          linkEl.style.marginTop = "12px";
+          linkEl.style.color = "#007BFF";
+          linkEl.style.textDecoration = "underline";
+          linkEl.textContent = "View Google Drive Video";
+          extraContent.appendChild(linkEl);
+        }
       }
 
       document.getElementById("projectModal").style.display = "flex";
@@ -386,24 +461,24 @@
     const certData = [
       {
         title: "AI4I – Foundations in AI",
-        image: "images/cert1.jpeg"
+        image: "images/cert1.jpeg",
       },
       {
         title: "AI4I – Literacy in AI",
-        image: "images/cert2.jpeg"
+        image: "images/cert2.jpeg",
       },
       {
         title: "Certification in AI Ethics & Governance (Associate)",
-        image: "images/cert3.png"
+        image: "images/cert3.png",
       },
       {
         title: "Prompt Engineering Baseline",
-        image: "images/cert4.png"
+        image: "images/cert4.png",
       },
       {
         title: "Sustainability Basecamp",
-        image: "images/cert5.png"
-      }
+        image: "images/cert5.png",
+      },
     ];
 
     function openCertModal(index) {
@@ -418,9 +493,8 @@
     }
 
     function closeModal() {
-  document.getElementById("projectModal").style.display = "none";
+      document.getElementById("projectModal").style.display = "none";
     }
-
   </script>
 </body>
 </html>
