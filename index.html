@@ -1,233 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jeryann Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body data-theme="dark">
-    <header class="nav-bar">
-      <div class="nav-logo">JT</div>
-      <nav>
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="theme-toggle">
-        <i id="theme-icon" class="fas fa-sun"></i>
-      </button>
-    </header>
-
-    <section id="hero" class="hero">
-      <div class="hero-content">
-        <h1>Hi, it's jeryannw 👋</h1>
-        <div class="polaroid">
-          <img src="images/me.jpeg" alt="Jeryann" />
-          <p id="typing-text">Loading...</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="about">
-      <h2>About Me</h2>
-      <p>
-        I'm a passionate AI Applications student who loves turning ideas into
-        reality using tech. I enjoy building smart solutions that make a
-        difference in the world. 🌏
-      </p>
-    </section>
-
-    <section id="projects" class="projects">
-      <h2>Projects</h2>
-      <div class="project-grid">
-        <div class="project-card" onclick="openModal(0)">NAO Medical Assistant</div>
-        <div class="project-card" onclick="openModal(1)">Face to Plate</div>
-        <div class="project-card" onclick="openModal(2)">PPE Detection</div>
-        <div class="project-card" onclick="openModal(3)">Arduino Smart Sorter</div>
-        <div class="project-card" onclick="openModal(4)">Ping Pong Game</div>
-      </div>
-    </section>
-
-    <section id="certifications" class="certifications">
-      <h2>Certifications</h2>
-      <div class="cert-grid">
-        <div class="cert-card" onclick="openCertModal(0)">Foundations in AI</div>
-        <div class="cert-card" onclick="openCertModal(1)">Literacy in AI</div>
-        <div class="cert-card" onclick="openCertModal(2)">AI Ethics</div>
-        <div class="cert-card" onclick="openCertModal(3)">Prompt Eng</div>
-        <div class="cert-card" onclick="openCertModal(4)">Sustainability</div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <h2>Contact</h2>
-      <div class="contact-icons">
-        <a href="https://github.com/jeryannw" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:jeryannw@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://linkedin.com/in/jeryannw" target="_blank"><i class="fab fa-linkedin"></i></a>
-      </div>
-    </section>
-
-    <div id="projectModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalDescription"></p>
-        <video id="modalVideo" width="100%" controls style="display:none">
-          <source src="" type="video/mp4" />
-        </video>
-        <div id="extraContent"></div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeryann | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #f7f7f7;
+      --text: #111;
+      --card: #fff;
+      --polaroid-text: gray;
+    }
+    [data-theme='dark'] {
+      --bg: #111;
+      --text: #f7f7f7;
+      --card: #1f1f1f;
+      --polaroid-text: #ccc;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--card);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    nav .nav-left a, nav .nav-right a {
+      text-decoration: none;
+      color: var(--text);
+    }
+    nav .nav-left a {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    nav .nav-right a {
+      margin-left: 1rem;
+      font-weight: 500;
+    }
+    .theme-toggle {
+      cursor: pointer;
+      margin-left: 1rem;
+      font-size: 1.2rem;
+    }
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: var(--card);
+      padding: 2rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+    }
+    .wave {
+      display: inline-block;
+      animation: wave 2s infinite;
+      transform-origin: 70% 70%;
+    }
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0deg); }
+      10%, 30% { transform: rotate(14deg); }
+      20%, 40% { transform: rotate(-8deg); }
+      50% { transform: rotate(10deg); }
+    }
+    .polaroid {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      padding: 16px 16px 24px;
+      border: 1px solid #ccc;
+      text-align: center;
+      margin-top: 1.5rem;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+    }
+    .polaroid img {
+      width: 100%;
+      border-radius: 4px;
+    }
+    #typing-text {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: var(--polaroid-text);
+    }
+    .section {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .section hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 0.5rem 0 1.5rem;
+    }
+    .card-box {
+      background: var(--card);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .project {
+      background: var(--card);
+      border: 1px solid #ccc;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+    .project:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .contact-box {
+      background: var(--card);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-item a {
+      text-decoration: none;
+      color: var(--text);
+    }
+    .contact-item i {
+      font-size: 1.3rem;
+      width: 1.5rem;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .modal-content {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+    }
+    .modal-content img {
+      margin-top: 12px;
+      width: 100%;
+      border-radius: 6px;
+    }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <nav>
+    <div class="nav-left"><a href="#hero">JT</a></div>
+    <div class="nav-right">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+      <span class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </span>
     </div>
+  </nav>
 
-    <div id="certModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeCertModal()">&times;</span>
-        <h2 id="certTitle"></h2>
-        <img id="certImage" src="" alt="Certificate" style="width: 100%" />
-      </div>
+  <header id="hero">
+    <h1>Hello, it’s Jeryann <span class="wave">👋</span></h1>
+    <div class="polaroid">
+      <img src="images/jeryann.jpeg" alt="Jeryann"/>
+      <p id="typing-text">Loading...</p>
     </div>
+  </header>
 
-    <script>
-      window.onload = function () {
-        const phrases = [
-          "Welcome to my website!",
-          "I love coding!",
-          "2025",
-          "AI Applications Student"
-        ];
-        let currentPhrase = 0, currentChar = 0;
-        const typingText = document.getElementById("typing-text");
+  <section class="section" id="about">
+    <h2>About Me</h2>
+    <hr />
+    <div class="card-box">
+      <p>My name is Jeryann and I'm a final year Higher Nitec student pursuing AI Applications. I love doing anything related to tech especially UI/UX and AI! My goal is to build something that can benefit the world especially with how fast paced the world is developing now. During my free time, I like to watch movies/shows, play video games and discover new food places :)</p>
+    </div>
+  </section>
 
-        function typePhrase() {
-          if (!typingText) return;
-          typingText.textContent = phrases[currentPhrase].slice(0, currentChar++);
-          if (currentChar > phrases[currentPhrase].length) {
-            setTimeout(() => {
-              currentChar = 0;
-              currentPhrase = (currentPhrase + 1) % phrases.length;
-              typePhrase();
-            }, 1500);
-          } else {
-            setTimeout(typePhrase, 100);
-          }
-        }
-        typePhrase();
+  <section class="section" id="projects">
+    <h2>Projects</h2>
+    <hr />
+    <div class="project" onclick="openModal(0)">NAO Medical Assistant</div>
+    <div class="project" onclick="openModal(1)">Face to Plate</div>
+    <div class="project" onclick="openModal(2)">Personal Protective Equipment Detection</div>
+    <div class="project" onclick="openModal(3)">Arduino Smart Sorter</div>
+  </section>
 
-        document.querySelector(".theme-toggle").addEventListener("click", toggleTheme);
+  <section class="section" id="certifications">
+    <h2>Certifications</h2>
+    <hr />
+    <div class="project" onclick="openCertModal(0)">AI4I – Foundations in AI</div>
+    <div class="project" onclick="openCertModal(1)">AI4I – Literacy in AI</div>
+    <div class="project" onclick="openCertModal(2)">Certification in AI Ethics & Governance (Associate)</div>
+    <div class="project" onclick="openCertModal(3)">Prompt Engineering Baseline</div>
+    <div class="project" onclick="openCertModal(4)">Sustainability Basecamp</div>
+  </section>
 
-        function toggleTheme() {
-          const body = document.body;
-          const icon = document.getElementById("theme-icon");
-          const isDark = body.getAttribute("data-theme") === "dark";
-          body.setAttribute("data-theme", isDark ? "light" : "dark");
-          icon.className = isDark ? "fas fa-moon" : "fas fa-sun";
-        }
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <hr />
+    <div class="contact-box">
+      <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:jeryann@outlook15.com">jeryann@outlook15.com</a></div>
+      <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/jeryanntan" target="_blank">linkedin.com/in/jeryanntan</a></div>
+      <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/JAW-05" target="_blank">github.com/JAW-05</a></div>
+    </div>
+  </section>
 
-        const projectData = [
-          {
-            title: "NAO Medical Assistant",
-            description: "Speech enabled robot using NAOqi, with TTS, reminders, and basic healthcare commands.",
-            video: "videos/nao_demo.mp4"
-          },
-          {
-            title: "Face to Plate",
-            description: "Real-time food recommendation based on age, gender, emotion using OpenVINO and Streamlit.",
-            video: "videos/food.mp4"
-          },
-          {
-            title: "Personal Protective Equipment Detection System",
-            description: "Aligned with UN SDGs using Streamlit, OpenCV and RoboFlow. Developed this during the ITE x BrainAI Korea Exchange with the Korean students :)",
-            video: "",
-            images: ["images/ppe1.png", "images/ppe2.png", "images/ppe3.png"],
-            link: "https://drive.google.com/file/d/1y2OWfY9TMwXvLA8c8FQv9bZFeK_Xo8hh/view?usp=sharing"
-          },
-          {
-            title: "Arduino Smart Sorter",
-            description: "A conveyor based sorting system using TinyML and Raspberry Pi with real time scoring sent to ThinkSpeak.",
-            video: ""
-          },
-          {
-            title: "Ping Pong Game",
-            description: "Ping Pong game made using Python and Python which is inspired by the retro game 'Pong'! Includes 2 player gameplay, scoring, and smooth gameplay.",
-            video: "videos/pingpong.mp4"
-          }
-        ];
+  <footer style="text-align:center; padding:2rem; color:gray;">&copy; 2025 Jeryann.</footer>
 
-        const certData = [
-          { title: "AI4I – Foundations in AI", image: "images/cert1.jpeg" },
-          { title: "AI4I – Literacy in AI", image: "images/cert2.jpeg" },
-          { title: "Certification in AI Ethics & Governance (Associate)", image: "images/cert3.png" },
-          { title: "Prompt Engineering Baseline", image: "images/cert4.png" },
-          { title: "Sustainability Basecamp", image: "images/cert5.png" }
-        ];
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+      <div id="extraContent"></div>
+      <video id="modalVideo" controls style="width:100%; display:none;">
+        <source src="" type="video/mp4">
+      </video>
+    </div>
+  </div>
 
-        window.openModal = function (index) {
-          const data = projectData[index];
-          document.getElementById("modalTitle").textContent = data.title;
-          document.getElementById("modalDescription").textContent = data.description;
+  <div class="modal" id="certModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeCertModal()">&times;</span>
+      <h3 id="certTitle"></h3>
+      <img id="certImage" src="" alt="Certification" />
+    </div>
+  </div>
 
-          const video = document.getElementById("modalVideo");
-          const source = video.querySelector("source");
-          if (data.video) {
-            video.style.display = "block";
-            source.src = data.video;
-            video.load();
-          } else {
-            video.style.display = "none";
-          }
+  <script>
+    const phrases = [
+      "Welcome to my website!",
+      "I love coding!",
+      "2025",
+      "AI Applications Student"
+    ];
+    let currentPhrase = 0, currentChar = 0;
+    const typingText = document.getElementById("typing-text");
+    function typePhrase() {
+      typingText.textContent = phrases[currentPhrase].slice(0, currentChar++);
+      if (currentChar > phrases[currentPhrase].length) {
+        setTimeout(() => {
+          currentChar = 0;
+          currentPhrase = (currentPhrase + 1) % phrases.length;
+          typePhrase();
+        }, 1500);
+      } else {
+        setTimeout(typePhrase, 100);
+      }
+    }
+    typePhrase();
 
-          const extraContent = document.getElementById("extraContent");
-          extraContent.innerHTML = "";
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      const isDark = body.getAttribute("data-theme") === "dark";
+      body.setAttribute("data-theme", isDark ? "light" : "dark");
+      icon.className = isDark ? "fas fa-moon" : "fas fa-sun";
+    }
 
-          if (data.images) {
-            data.images.forEach(img => {
-              const imageEl = document.createElement("img");
-              imageEl.src = img;
-              imageEl.style.marginTop = "12px";
-              imageEl.style.width = "100%";
-              extraContent.appendChild(imageEl);
-            });
-          }
+    const projectData = [
+      {
+        title: "NAO Medical Assistant",
+        description: "Speech enabled robot using NAOqi, with TTS, reminders, and basic healthcare commands.",
+        video: "videos/nao_demo.mp4"
+      },
+      {
+        title: "Face to Plate",
+        description: "Real-time food recommendation based on age, gender, emotion using OpenVINO and Streamlit.",
+        video: "videos/food.mp4"
+      },
+      {
+        title: "Personal Protective Equipment Detection System",
+        description: "Aligned with UN SDGs using Streamlit, OpenCV and RoboFlow. Developed this during the ITE x BrainAI Korea Exchange with the Korean students :)",
+        video: "",
+        images: [
+          "images/ppe1.png",
+          "images/ppe2.png",
+          "images/ppe3.png"
+        ],
+        link: "https://drive.google.com/file/d/1y2OWfY9TMwXvLA8c8FQv9bZFeK_Xo8hh/view?usp=sharing"
+      },
+      {
+        title: "Arduino Smart Sorter",
+        description: "A conveyor based sorting system using TinyML and Raspberry Pi with real time scoring sent to ThinkSpeak.",
+        video: ""
+      }
+    ];
 
-          if (data.link) {
-            const linkEl = document.createElement("a");
-            linkEl.href = data.link;
-            linkEl.target = "_blank";
-            linkEl.textContent = "View Google Drive Video";
-            linkEl.style.display = "block";
-            linkEl.style.marginTop = "12px";
-            linkEl.style.color = "#007BFF";
-            linkEl.style.textDecoration = "underline";
-            extraContent.appendChild(linkEl);
-          }
+    function openModal(index) {
+      const data = projectData[index];
+      document.getElementById("modalTitle").textContent = data.title;
+      document.getElementById("modalDescription").textContent = data.description;
 
-          document.getElementById("projectModal").style.display = "flex";
-        };
+      const video = document.getElementById("modalVideo");
+      const source = video.querySelector("source");
+      if (data.video) {
+        video.style.display = "block";
+        source.src = data.video;
+        video.load();
+      } else {
+        video.style.display = "none";
+      }
 
-        window.closeModal = function () {
-          document.getElementById("projectModal").style.display = "none";
-        };
+      const extraContent = document.getElementById("extraContent");
+      extraContent.innerHTML = "";
 
-        window.openCertModal = function (index) {
-          const cert = certData[index];
-          document.getElementById("certTitle").textContent = cert.title;
-          document.getElementById("certImage").src = cert.image;
-          document.getElementById("certModal").style.display = "flex";
-        };
+      if (data.images && data.images.length) {
+        data.images.forEach(img => {
+          const imageEl = document.createElement("img");
+          imageEl.src = img;
+          extraContent.appendChild(imageEl);
+        });
+      }
 
-        window.closeCertModal = function () {
-          document.getElementById("certModal").style.display = "none";
-        };
-      };
-    </script>
-  </body>
+      if (data.link) {
+        const linkEl = document.createElement("a");
+        linkEl.href = data.link;
+        linkEl.target = "_blank";
+        linkEl.style.display = "block";
+        linkEl.style.marginTop = "12px";
+        linkEl.style.color = "#007BFF";
+        linkEl.style.textDecoration = "underline";
+        linkEl.textContent = "View Google Drive Video";
+        extraContent.appendChild(linkEl);
+      }
+
+      document.getElementById("projectModal").style.display = "flex";
+    }
+
+    const certData = [
+      {
+        title: "AI4I – Foundations in AI",
+        image: "images/cert1.jpeg"
+      },
+      {
+        title: "AI4I – Literacy in AI",
+        image: "images/cert2.jpeg"
+      },
+      {
+        title: "Certification in AI Ethics & Governance (Associate)",
+        image: "images/cert3.png"
+      },
+      {
+        title: "Prompt Engineering Baseline",
+        image: "images/cert4.png"
+      },
+      {
+        title: "Sustainability Basecamp",
+        image: "images/cert5.png"
+      }
+    ];
+
+    function openCertModal(index) {
+      const cert = certData[index];
+      document.getElementById("certTitle").textContent = cert.title;
+      document.getElementById("certImage").src = cert.image;
+      document.getElementById("certModal").style.display = "flex";
+    }
+
+    function closeCertModal() {
+      document.getElementById("certModal").style.display = "none";
+    }
+
+    function closeModal() {
+  document.getElementById("projectModal").style.display = "none";
+    }
+
+  </script>
+</body>
 </html>
