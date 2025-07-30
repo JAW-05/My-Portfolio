@@ -208,6 +208,7 @@
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#certifications">Certifications</a>
+      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
       <span class="theme-toggle" onclick="toggleTheme()">
         <i class="fas fa-moon" id="theme-icon"></i>
@@ -253,6 +254,14 @@
     <div class="project" onclick="openCertModal(4)">Sustainability Basecamp</div>
   </section>
 
+  <section class="section" id="experience">
+    <h2>Certifications</h2>
+    <hr />
+    <div class="project" onclick="openCertModal(0)">The Experience ITE Programme</div>
+    <div class="project" onclick="openCertModal(1)">2024 ITE West Debate Winner</div>
+    <div class="project" onclick="openCertModal(2)">ITE x BrainAI Korean Exchange</div>
+  </section>
+
   <section class="section" id="contact">
     <h2>Contact</h2>
     <hr />
@@ -284,6 +293,15 @@
       <span class="close-modal" onclick="closeCertModal()">&times;</span>
       <h3 id="certTitle"></h3>
       <img id="certImage" src="" alt="Certification" />
+    </div>
+  </div>
+
+  <div class="modal" id="expModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeExpModal()">&times;</span>
+      <h3 id="expTitle"></h3>
+      <p id="expDesc"></p>
+      <img id="expImage" src="" style="margin-top: 1rem; width: 100%; border-radius: 6px; display: none;" />
     </div>
   </div>
 
@@ -434,6 +452,33 @@
 
     function closeModal() {
       document.getElementById("projectModal").style.display = "none";
+    }
+
+     const expData = [
+      {
+        title: "Teaching AI to Secondary Students",
+        desc: "Introduced secondary school students to basic AI concepts like chatbots, image classification, and responsible use of tools like Gemini."
+      },
+      {
+        title: "1st Place Debate Competition",
+        desc: "Won 1st place in a school-wide debate competition representing ITE West. Showcased communication and teamwork skills."
+      },
+      {
+        title: "NCC (Sea) Sergeant & Medic",
+        desc: "Led juniors in training, represented school in drills and competitions, and provided medical assistance to peers."
+      }
+    ];
+
+    function openExpModal(index) {
+      const exp = expData[index];
+      document.getElementById("expTitle").textContent = exp.title;
+      document.getElementById("expDesc").textContent = exp.desc;
+      document.getElementById("expImage").style.display = "none";
+      document.getElementById("expModal").style.display = "flex";
+    }
+
+    function closeExpModal() {
+      document.getElementById("expModal").style.display = "none";
     }
   </script>
 </body>
